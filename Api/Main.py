@@ -3,7 +3,7 @@ from Helpers.MainHelper import MainHelper
 from Model.Connection import Connection
 
 app = Flask(__name__)
-connection = Connection('localhost', 'api_cnpj', 'root', '17102003naruto')
+connection = Connection('host', 'database', 'user', 'password')
 connection.connect()
 helper = MainHelper(connection)
 
@@ -19,5 +19,5 @@ def read_url_data(text):
     return response
 
 if __name__ == '__main__':
-    app.run(debug=True)
-    #app.run(host='0.0.0.0', debug=False)
+    #app.run(debug=True)
+    app.run(host='0.0.0.0', debug=False)

@@ -32,22 +32,25 @@ class MainHelper:
         self.connection.cursor.execute(query, (cnpj[0:8],))
         itens_empresa = self.connection.cursor.fetchall()
 
+
         qualificacao = self.__getQualificacaoSocio(itens_empresa[0][3])
         natureza = self.__getNatureza(itens_empresa[0][2])
         socios = self.__getSocios(cnpj)
         estabelecimentos = self.__getEstabelecimentos(cnpj)
 
         empresa = Empresa(cnpj_base=itens_empresa[0][0],
-                          razao_social=itens_empresa[0][1],
-                          capital_social=itens_empresa[0][4],
-                          porte_empresa=PorteEmpresa(itens_empresa[0][5]),
-                          ente_federativo=itens_empresa[0][6],
-                          qualificacao_responsavel=qualificacao,
-                          natureza=natureza,
-                          estabelecimentos=estabelecimentos,
-                          socios=socios)
+                        razao_social=itens_empresa[0][1],
+                        capital_social=itens_empresa[0][4],
+                        porte_empresa=PorteEmpresa(itens_empresa[0][5]),
+                        ente_federativo=itens_empresa[0][6],
+                        qualificacao_responsavel=qualificacao,
+                        natureza=natureza,
+                        estabelecimentos=estabelecimentos,
+                        socios=socios)
 
         return empresa
+        
+
 
     def __getQualificacaoSocio(self, codigo_qualificacao):
         query = "SELECT descricao FROM qualificacao_socio where (codigo_qualificacao = %s)"

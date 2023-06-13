@@ -273,7 +273,6 @@ class Commands:
         except Exception as e:
             print('Error populating simples:', e)
 
-
     def loadEmpresas(self, filename):
         try:
             file = pd.read_csv(filename, delimiter=';', encoding='latin-1', header=None)
